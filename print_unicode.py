@@ -10,12 +10,12 @@ def	print_unicode_table(words):
 	while   code<end:
 		c=chr(code)
 		name=unicodedata.name(c,"***unknown***")
-		 ok = True
+		 b = True
         for word in words:
-            if word not in name.lower():
-                ok = False
+            if word.lower() not in name.lower():
+                b = False
                 break
-        if ok:
+        if b:
             print("{0:7}  {0:5X}  {0:^3c}  {1}".format(
                   code, name.title()))
         code += 1
@@ -24,11 +24,11 @@ def	print_unicode_table(words):
 words = []
 if len(sys.argv) > 1:
     if sys.argv[1] in ("-h", "--help"):
-        print("usage: {0} [string1 [string2 [... stringN]]]".format(
+        print("usage: {0} [string]".format(
               sys.argv[0]))
         words = None
     else:
-        for word in sys.argv[1:]:
+        words= sys.argv[1:]
             words.append(word.lower())
 if words is not None:
-    print_unicode_table(words)
+    print unicode table(words)
